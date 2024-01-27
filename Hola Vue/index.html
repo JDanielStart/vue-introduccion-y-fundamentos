@@ -13,15 +13,19 @@
         const vm = Vue.createApp({
             data() {
                 return {
-                    counter: 0
+                    counter: 0,
+                    evento: "click"
                 };
             },
             methods: {
-                increment() {
+                mas() {
                     this.counter++;
+                },
+                menos() {
+                    this.counter--;
                 }
             },
-            template: `<button v-on:click="increment">{{ counter }}</button>`
+            template: `<button v-on:[evento]="menos">-</button><button>{{ counter }}</button><button v-on:[evento]="mas">+</button>`
         }).mount("#app");
     </script>
 </body>
