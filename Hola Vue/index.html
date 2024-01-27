@@ -13,14 +13,26 @@
         const vm = Vue.createApp({
             data() {
                 return {
-                    text: "Hola vue"
+                    firstName: "Diana",
+                    lastName: "Martinez",
+                    now: new Date()
                 };
             },
-            // v-on es lo mismo que @  v-bind es lo mismo que :
+            //La diferencia entre la data es que esta
+            //la computada no necesita ser llamada para que escuche
+            //los cambios pero la data si
+            //Sería como el getter de una clase
+            computed: {
+                fullName() {
+                    return this.firstName + " " + this.lastName;
+                },
+                today() {
+                    return this.now.toLocaleDateString();
+                }
+            },
             template: `
-                <p>{{ text }}</p>
-                <input type="text"
-                v-model="text"/>
+                <div> {{ fullName }} </div>
+                <div> {{ today }} </div>
             `
         }).mount("#app");
     </script>
