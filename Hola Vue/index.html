@@ -21,11 +21,12 @@
                     this.text = entrada.target.value;
                 }
             },
+            // v-on es lo mismo que @  v-bind es lo mismo que :
             template: `
                 <p>{{ text }}</p>
                 <input type="text"
-                v-on:input="input"
-                v-bind:value="text"/>
+                @input="input"
+                :value="text"/>
             `
         }).mount("#app");
     </script>
