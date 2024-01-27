@@ -16,17 +16,11 @@
                     text: "Hola vue"
                 };
             },
-            methods: {
-                input(entrada) {
-                    this.text = entrada.target.value;
-                }
-            },
             // v-on es lo mismo que @  v-bind es lo mismo que :
             template: `
                 <p>{{ text }}</p>
                 <input type="text"
-                @input="input"
-                :value="text"/>
+                v-model="text"/>
             `
         }).mount("#app");
     </script>
