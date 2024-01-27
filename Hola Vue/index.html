@@ -6,7 +6,19 @@
     <title>Document</title>
 </head>
 <body>
-    
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+    <div id="app">{{ text }}</div>
+    <script>
+        const vm = Vue.createApp({
+            data() {
+                return {
+                    text: "Hola Vue"
+                };
+            }
+        }).mount("#app");
+        console.log(vm);
+        vm.text = "cambiando texto"
+    </script>
 </body>
 </html>
