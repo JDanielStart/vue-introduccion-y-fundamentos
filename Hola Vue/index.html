@@ -13,19 +13,18 @@
         const vm = Vue.createApp({
             data() {
                 return {
-                    counter: 0,
-                    evento: "click"
+                    text: "Hola vue"
                 };
             },
             methods: {
-                mas() {
-                    this.counter++;
-                },
-                menos() {
-                    this.counter--;
+                input(entrada) {
+                    this.text = entrada.target.value;
                 }
             },
-            template: `<button v-on:[evento]="menos">-</button><button>{{ counter }}</button><button v-on:[evento]="mas">+</button>`
+            template: `
+                <p>{{ text }}</p>
+                <input type="text" v-on:change="input"/>
+            `
         }).mount("#app");
     </script>
 </body>
