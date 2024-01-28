@@ -16,26 +16,38 @@
         const app = Vue.createApp({
             data() {
                 return {
-                    items: ["uno", "dos", "tres", ,]
+                    items: ["uno", "dos", "tres"]
+                }
+            },
+            methods: {
+                remove(i) {
+                    this.items = this.items.filter((value, index) => index !== i);
                 }
             },
             template:
             `
             <ul>
-                <v-item v-for="item in items" v-bind:text="item"></v-item>
+                <v-item
+                    v-for="(item, index) in items"
+                    v-bind:text="item"
+                    v-on:remove="remove(index)"
+                />
             </ul>
             `
         });
 
         app.component("v-item", {
             props: {
-                text: {
-                    default: "Texto vacío"
+                text: String
+            },
+            methods: {
+                rm() {
+                    this.$emit("remove");
                 }
             },
             template:
             `
-                <li>{{ text }}</li>
+                <li v-on:click="rm">{{ text }}</li>
             `
         });
 
